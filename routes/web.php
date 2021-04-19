@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('contactame ', function () {
+    return "Sección de Contactos";
+})->name('contactos');
+
+Route::get('home', function () {
+    echo "<a href='" . route('contactos') . "'>Contacto 1</a><br>";
 });
