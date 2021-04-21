@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('contactame ', function () {
-    return "Sección de Contactos";
-})->name('contactos');
-
 Route::get('home', function () {
-    echo "<a href='" . route('contactos') . "'>Contacto 1</a><br>";
-});
+    return view('home');
+})->name('home');
+
+Route::get('portfolio', function () {
+    return view('portfolio');
+})->name('portfolio');
+
+Route::get('about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
+
