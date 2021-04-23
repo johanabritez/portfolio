@@ -2,9 +2,11 @@
 <nav>
 	<ul>
 		{{-- setLinkActive() es una función helper que está en app/helpers.php --}}
-		<li class="{{ setLinkActive('home') }}"><a href="home">Home</a></li>
-		<li class="{{ setLinkActive('about') }}"><a href="about">About</a></li>
-		<li class="{{ setLinkActive('portfolio') }}"><a href="portfolio">Portfolio</a></li>
-		<li class="{{ setLinkActive('contact') }}"><a href="contact">Contact</a></li>
+		<li class="{{ setLinkActive('home') }}"><a href="{{ route('home') }}">Home</a></li>
+		<li class="{{ setLinkActive('about') }}"><a href="{{ route('about') }}">About</a></li>
+		<li class="{{ setLinkActive('projects.*') }}"><a href="{{ route('projects.index') }}">Portfolio</a></li>
+		<li class="{{ setLinkActive('contact') }}"><a href="{{ route('contact') }}">Contact</a></li>
+
+		{{-- projects.* es para activar todos los links que empiecen con projects --}}
 	</ul>
 </nav>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Professional Portfolio</title>
+	<title>Johana Brítez | Portfolio</title>
 
 	<style type="text/css">
 		.activeLink a
@@ -13,8 +13,8 @@
 </head>
 
 <body>
-	{{-- se importa el archivo nav.blade.php que está en la carpeta partials para utilizar la barra de navegación que se declaró ahí --}}
-	@include(partials.nav)
+	{{-- se importa el archivo nav.blade.php que está en la carpeta partials para utilizar la barra dse navegación que se declaró ahí --}}
+	@include('partials.nav')
 
 	{{-- Se crea una sección --}}
 	@yield('content')
