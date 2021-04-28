@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
-use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -28,7 +28,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        // se retorna una instancia de Project (vacío) para reutilizar la vista de create y edit, ya que la vista edit necesita tener $project para mostrar los datos ( old('item', $project) ---> si tiene item usa ese y sino usa $project)  y en create le enviamos vacío (old('item', $project) ---> como $project es null utilizará title)
+
+        return view('projects.create',  ['project' => New Project]);
     }
 
     /**
@@ -37,9 +39,8 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateProjectRequest $request)
+    public function store(SaveProjectRequest $request)
     {
-        // dd($request->all());
         Project::create([
             'title' => $request->get('title'),
             'url' => $request->get('url'),
@@ -63,26 +64,34 @@ class ProjectController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource project.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project) //se recibe el objeto project y ya no el id (model se inyecta directo)
     {
-        //
+        return view('projects.edit', ['project' => $project]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource project in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SaveProjectRequest $request, Project $project)
     {
-        //
+       $project->update
+       ([
+            'title' => $request->get('title'),
+            'url' => $request->get('url'),
+            'description' => $request->get('description'),
+            'date' => $request->get('project_date')
+       ]);
+
+       return redirect()->route('projects.show', $project);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,21 +19,16 @@ use App\Http\Controllers\ProjectController;
 Route::get('/', function () { return view('home'); })->name('home');
 
 // Resource route for projects
-Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
-Route::get('projects/create', [ProjectController::class, 'create'])->name('projects.create');
-Route::post('projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::resource('projects', ProjectController::class);
 
-// {project} es el objeto completo project y ya no el id, esto para buscar en la url por cualquier otro campo que no sea el id. En este caso se busca por título de proyecto para hacer más amigable la lectura en la url (route model binding)
-Route::get('project/{project}', [ProjectController::class, 'show'])->name('projects.show');
+// {project} es el objeto completo project y ya no el id, esto para buscar en la url por cualquier otro campo que no sea el id. En este caso se busca por título de proyecto para hacer más amigable la lectura en la url (route model binding) EJEMPLO DE LA RUTA SHOW
+// Route::get('project/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
+// Route for the About view
+Route::get('about', function () { return view('about'); })->name('about');
 
+// Route for the Contact view
+Route::get('contact/create', [ContactController::class, 'create'])->name('contact');
+Route::post('contact', [ContactController::class, 'store'])->name('storeContact');
 
-
-Route::get('about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
 
