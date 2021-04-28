@@ -13,8 +13,11 @@
 </head>
 
 <body>
-	{{-- se importa el archivo nav.blade.php que está en la carpeta partials para utilizar la barra dse navegación que se declaró ahí --}}
+	{{-- incluye el archivo nav.blade.php que está en la carpeta partials para utilizar la barra de navegación que se declaró ahí --}}
 	@include('partials.nav')
+
+	{{-- incluye el archivo que muestra los mensajes de sesión --}}
+	@include('partials.session-messages-status')
 
 	{{-- Se crea una sección --}}
 	@yield('content')

@@ -3,6 +3,7 @@
 @section('content')
 	<h1>Edit project</h1>
 
+	{{-- incluye el archivo que muestra los mensajes de errores --}}
 	@include('partials.validation-errors')
 
 	<form action="{{ route('projects.update', $project) }}" method="POST">

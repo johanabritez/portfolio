@@ -48,7 +48,7 @@ class ProjectController extends Controller
             'date' => $request->get('project_date')
         ]);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'Project created!');
     }
 
     /**
@@ -91,7 +91,7 @@ class ProjectController extends Controller
             'date' => $request->get('project_date')
        ]);
 
-       return redirect()->route('projects.show', $project);
+       return redirect()->route('projects.show', $project)->with('status', 'Project updated!');
     }
 
     /**

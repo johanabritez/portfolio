@@ -26,6 +26,6 @@ class ContactController extends Controller
     	// envía el objeto $message a la dirección indicada
     	Mail::to('johanabritezf@gmail.com')->queue(new MailReceived($message));
 
-    	return 'Message Sent';
+    	return back()->with('status', 'Message sent. We will respond as soon as possible');
     }
 }

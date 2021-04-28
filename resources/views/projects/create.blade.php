@@ -3,6 +3,7 @@
 @section('content')
 	<h1>Create new project</h1>
 
+	{{-- incluye el archivo que muestra los mensajes de errores --}}
 	@include('partials.validation-errors')
 
 	<form method="POST" action="{{ route('projects.store') }}">
