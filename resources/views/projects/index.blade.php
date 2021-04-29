@@ -2,7 +2,11 @@
 
 @section('content')
 	<h1>Projects</h1>
-	<a href="{{ route('projects.create') }}">New Project</a>
+
+	@auth
+		{{-- sólo si el usuario logueado pueden crear proyectos, los invitados no --}}
+		<a href="{{ route('projects.create') }}">New Project</a>
+	@endauth
 
 	<ul>
 		@forelse($projects as $project)

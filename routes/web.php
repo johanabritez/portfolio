@@ -31,4 +31,6 @@ Route::get('about', function () { return view('about'); })->name('about');
 Route::get('contact/create', [ContactController::class, 'create'])->name('contact');
 Route::post('contact', [ContactController::class, 'store'])->name('storeContact');
 
+// Rutas para login, logout y regiser users
+Auth::routes();
 

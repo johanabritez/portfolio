@@ -8,6 +8,15 @@ use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
+    public function __construc()
+    {
+        // proteger con el middleware las rutas que no queremos que el usuario invitado utilice,
+        // solamente queremos que puedan ver la lista de proyectos y sus detalles
+
+        $this->middleware('auth')->except('index', 'show');
+    }
+
+
     /**
      * Display a listing of the projects.
      *
